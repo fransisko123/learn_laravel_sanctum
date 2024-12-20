@@ -11,7 +11,7 @@ class PostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -22,7 +22,9 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            'user_id' => 'nullable',
+            'title' => 'required|max:255',
+            'content' => 'required'
         ];
     }
 }
